@@ -1,21 +1,53 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+<div class="container">
+  <div class="row pt-5">
+    <div class="col-12 col-md-4">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input class="form-control form-control-sm" type="email" [(ngModel)]="payment.email" />
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="cardNumber">Número cartão</label>
+              <input class="form-control form-control-sm" type="text" [(ngModel)]="payment.cardNumber" data-checkout="cardNumber" />
+            </div>
+            <div class="form-group col-md-3">
+              <label for="securityCode">CVV</label>
+              <input class="form-control form-control-sm" type="text" [(ngModel)]="payment.securityCode" placeholder="754" data-checkout="securityCode" />
+            </div>
+            <div class="form-group col-md-3">
+              <label for="cardExpirationMonth">Validade:</label>
+              <input class="form-control form-control-sm" type="text" [(ngModel)]="payment.expiration" placeholder="10/2027" data-checkout="cardExpirationMonth" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="cardholderName">Nome</label>
+            <input class="form-control form-control-sm" type="text" [(ngModel)]="payment.cardholderName" data-checkout="cardholderName" />
+            <small class="form-text text-muted">Nome impresso na face do cartão.</small>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-3">
+              <label for="docType">Doc.</label>
+              <select class="form-control form-control-sm" [(ngModel)]="payment.docType" data-checkout="docType"></select>
+            </div>
+            <div class="form-group col-md-9">
+              <label for="docNumber">Número documento</label>
+              <input class="form-control form-control-sm" type="text" [(ngModel)]="payment.docNumber" data-checkout="docNumber" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="installments">Parcelas:</label>
+            <select class="form-control form-control-sm" name="installments">
+              <option value="1">1x Sem juros</option>
+              <option value="2">2x Com juros (5% a.m)</option>
+              <option value="3">3x Com juros (10% a.m)</option>
+            </select>
+          </div>
+        <input type="hidden" name="amount" id="amount" />
+        <input type="hidden" name="description" />
+        <input type="hidden" name="paymentMethodId" />
+        <input type="submit" class="btn btn-primary" value="Pagar!" (click)="pay()" />
+    </div>
+  </div>
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
-
+<div toastContainer></div>
 <router-outlet></router-outlet>
