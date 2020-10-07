@@ -1,51 +1,59 @@
 <div class="container">
   <div class="row pt-5">
-    <div class="col-12 col-md-4">
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input class="form-control form-control-sm" type="email" [(ngModel)]="payment.email" />
+    <div class="col-12 col-md-4 offset-md-4">
+      <div class="alert alert-info text-center" role="alert">
+        <b>Integração MercadoPago</b><br>
+        <span>Ambiente de testes</span>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-md-4 offset-md-4">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input class="form-control form-control-sm" type="email" [(ngModel)]="payment.email" />
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="cardNumber">Número cartão</label>
+            <input class="form-control form-control-sm" type="text" [(ngModel)]="payment.cardNumber" data-checkout="cardNumber" />
           </div>
-          <div class="form-row">
-            <div class="form-group col-md-6">
-              <label for="cardNumber">Número cartão</label>
-              <input class="form-control form-control-sm" type="text" [(ngModel)]="payment.cardNumber" data-checkout="cardNumber" />
-            </div>
-            <div class="form-group col-md-3">
-              <label for="securityCode">CVV</label>
-              <input class="form-control form-control-sm" type="text" [(ngModel)]="payment.securityCode" placeholder="754" data-checkout="securityCode" />
-            </div>
-            <div class="form-group col-md-3">
-              <label for="cardExpirationMonth">Validade:</label>
-              <input class="form-control form-control-sm" type="text" [(ngModel)]="payment.expiration" placeholder="10/2027" data-checkout="cardExpirationMonth" />
-            </div>
+          <div class="form-group col-md-3">
+            <label for="securityCode">CVV</label>
+            <input class="form-control form-control-sm" type="text" [(ngModel)]="payment.securityCode" placeholder="754" data-checkout="securityCode" />
           </div>
-          <div class="form-group">
-            <label for="cardholderName">Nome</label>
-            <input class="form-control form-control-sm" type="text" [(ngModel)]="payment.cardholderName" data-checkout="cardholderName" />
-            <small class="form-text text-muted">Nome impresso na face do cartão.</small>
+          <div class="form-group col-md-3">
+            <label for="cardExpirationMonth">Validade:</label>
+            <input class="form-control form-control-sm" type="text" [(ngModel)]="payment.expiration" placeholder="10/2027" data-checkout="cardExpirationMonth" />
           </div>
-          <div class="form-row">
-            <div class="form-group col-md-3">
-              <label for="docType">Doc.</label>
-              <select class="form-control form-control-sm" [(ngModel)]="payment.docType" data-checkout="docType"></select>
-            </div>
-            <div class="form-group col-md-9">
-              <label for="docNumber">Número documento</label>
-              <input class="form-control form-control-sm" type="text" [(ngModel)]="payment.docNumber" data-checkout="docNumber" />
-            </div>
+        </div>
+        <div class="form-group">
+          <label for="cardholderName">Nome</label>
+          <input class="form-control form-control-sm" type="text" [(ngModel)]="payment.cardholderName" data-checkout="cardholderName" />
+          <small class="form-text text-muted">Nome impresso na face do cartão.</small>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-3">
+            <label for="docType">Doc.</label>
+            <select class="form-control form-control-sm" [(ngModel)]="payment.docType" data-checkout="docType"></select>
           </div>
-          <div class="form-group">
+          <div class="form-group col-md-9">
+            <label for="docNumber">Número documento</label>
+            <input class="form-control form-control-sm" type="text" [(ngModel)]="payment.docNumber" data-checkout="docNumber" />
+          </div>
+        </div>
+        <div class="form-group">
             <label for="installments">Parcelas:</label>
             <select class="form-control form-control-sm" name="installments">
               <option value="1">1x Sem juros</option>
               <option value="2">2x Com juros (5% a.m)</option>
               <option value="3">3x Com juros (10% a.m)</option>
             </select>
-          </div>
+        </div>
         <input type="hidden" name="amount" id="amount" />
         <input type="hidden" name="description" />
         <input type="hidden" name="paymentMethodId" />
-        <input type="submit" class="btn btn-primary" value="Pagar!" (click)="pay()" />
+        <input type="submit" class="btn btn-primary float-right" value="Pagar!" (click)="pay()" />
     </div>
   </div>
 </div>
